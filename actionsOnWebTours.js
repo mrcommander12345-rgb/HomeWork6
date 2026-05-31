@@ -33,7 +33,7 @@ export class ActionsOnWebTours {
 
   login() {
     const loginBody = {
-      userSession: this.userSession, // Теперь здесь лежит валидная строка
+      userSession: this.userSession, 
       username: 'm1',
       password: '123',
       'login.x': '17',
