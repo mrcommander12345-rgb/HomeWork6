@@ -51,7 +51,7 @@ export class ActionsOnWebTours {
   openFlyPage() {
     this.citiesArray = [];
   
-    // ИСПРАВЛЕНО: Добавлен jar, чтобы сервер понимал, кто запрашивает страницу полетов
+    
     http.get('http://webtours.load-test.ru:1080/cgi-bin/welcome.pl?page=search', { jar: this.jar });
     http.get('http://webtours.load-test.ru:1080/cgi-bin/nav.pl?page=menu&in=flights', { jar: this.jar });
 
@@ -108,7 +108,7 @@ export class ActionsOnWebTours {
     const bodyForFactPayment = {
       firstName: 'm1',
       lastName: '123',
-      address1: 'Lenina st 10', // Пустые адреса Perl-скрипт WebTours часто отбрасывает
+      address1: 'Lenina st 10',
       address2: 'Moscow',
       pass1: 'DarthVader',
       creditCard: '5555-5555-5555-5555',

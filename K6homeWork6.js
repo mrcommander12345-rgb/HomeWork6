@@ -7,15 +7,15 @@ export const options = {
   scenarios: {
     open_model_yandex: {
       executor: 'ramping-arrival-rate',
-      startRate: 0,                 // Начинаем с 1 запроса в секунду
-      timeUnit: '1m',               // Базовая единица времени — секунда
-      preAllocatedVUs: 50,          // Выделяем 50 виртуальных пользователей заранее
-      maxVUs: 200,                  // Максимальный запас, если сервер начнет тормозить
+      startRate: 0,                 
+      timeUnit: '1m',               
+      preAllocatedVUs: 50,          
+      maxVUs: 200,                  
       stages: [
-        { target: 60, duration: '5m' }, // Плавно разгоняем до 60 зпросов в минуту
-        { target: 60, duration: '10m'},//удерживаем полку в течении 10 минут
-        {target: 72, duration:'5m'},//увеличиваем профиль до 120% в течении 5 минут
-        {target: 72, duration:'10m'}//удерживаем полку в течении 10 минут
+        { target: 60, duration: '5m' }, 
+        { target: 60, duration: '10m'},
+        {target: 72, duration:'5m'},
+        {target: 72, duration:'10m'}
         
       ],
       exec: 'testYandex',
@@ -24,15 +24,15 @@ export const options = {
     open_model_second:
     {
       executor: 'ramping-arrival-rate',
-      startRate: 0,                 // Начинаем с 1 запроса в секунду
-      timeUnit: '1m',               // Базовая единица времени — секунда
-      preAllocatedVUs: 50,          // Выделяем 50 виртуальных пользователей заранее
-      maxVUs: 200,                  // Максимальный запас, если сервер начнет тормозить
+      startRate: 0,                 
+      timeUnit: '1m',               
+      preAllocatedVUs: 50,          
+      maxVUs: 200,                  
       stages: [
-        { target: 120, duration: '5m' }, // Плавно разгоняем до 60 зпросов в минуту
-        { target: 120, duration: '10m'},//удерживаем полку в течении 10 минут
-        {target: 144, duration:'5m'},//увеличиваем профиль до 120% в течении 5 минут
-        {target: 144, duration:'10m'}//удерживаем полку в течении 10 минут
+        { target: 120, duration: '5m' }, 
+        { target: 120, duration: '10m'},
+        {target: 144, duration:'5m'},
+        {target: 144, duration:'10m'}
         
       ],
       exec: 'secondTest',
@@ -47,7 +47,7 @@ group('yandexLoad',function()
 {
   const res = http.get(`${baseProtocol}ya.ru`);
   check(res, {
-    'status is 200 or 302': (r) => r.status === 200 || r.status === 302,
+    'status is 200': (r) => r.status === 200,
   });
 });
 }
@@ -59,7 +59,7 @@ export function secondTest()
 {
    const res = http.get(`http://www.ru/`);
   check(res, {
-    'status is 200 or 302': (r) => r.status === 200 || r.status === 302,
+    'status is 200': (r) => r.status === 200,
   });
 });
 }
