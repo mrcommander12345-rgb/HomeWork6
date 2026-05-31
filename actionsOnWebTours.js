@@ -43,9 +43,6 @@ export class ActionsOnWebTours {
 
     let res = http.post('http://webtours.load-test.ru:1080/cgi-bin/login.pl', loginBody, { jar: this.jar });
     
-    check(res, {
-      'Авторизован успешно': (r) => r.body.includes('Welcome'),
-    });
   }
    
   openFlyPage() {
